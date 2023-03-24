@@ -1,0 +1,6 @@
+.drawerLink {
+  @apply text-ffield font-semibold;
+}
+.subDrawerLink {
+  @apply flex flex-col gap-4 text-ffield mx-4;
+}

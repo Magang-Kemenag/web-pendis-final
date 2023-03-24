@@ -1,0 +1,7 @@
+.navLink {
+  @apply hover:text-base-blue  focus:bg-transparent focus:text-base-blue hover:bg-transparent;
+}
+
+.dropdown {
+  @apply border border-ftitle rounded-lg text-base text-ffield bg-white;
+}

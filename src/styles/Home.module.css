@@ -1,0 +1,28 @@
+.base {
+  @apply mx-16 lg:mt-36 max-md:mt-32 max-sm:mt-28 max-md:mx-10 max-sm:mx-4 bg-[#FAFAFA];
+}
+.section_base {
+  @apply flex justify-between items-center mb-16 max-md:mt-16 max-md:mb-8 max-sm:mt-8 max-sm:mb-4;
+}
+.section_title {
+  @apply text-base-blue text-4xl font-bold max-sm:text-center;
+}
+.btn_standard {
+  @apply text-ftitle border-ffield border-2 py-5 px-9 rounded-full bg-transparent font-semibold hover:bg-ffield max-sm:hidden max-md:py-3;
+}
+
+.btn_standard_responsive {
+  @apply w-full border-2 rounded-full sm:hidden text-center text-ftitle border-ffield py-3 bg-transparent font-semibold hover:bg-ffield mt-9;
+}
+.article_base {
+  @apply grid grid-cols-3 gap-8 max-md:grid-cols-1 mb-16;
+}
+.title_center {
+  @apply text-base-blue text-4xl font-bold text-center;
+}
+.title_gap {
+  @apply mb-16 mt-32 max-md:mt-16 max-md:mb-8 max-sm:mt-8 max-sm:mb-4;
+}
+.beasiswa_publikasi {
+  @apply text-center font-semibold text-ftitle text-lg hover:text-base-blue h-12;
+}
