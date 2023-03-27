@@ -40,19 +40,19 @@ export default function Regulasi() {
                   data-aos-delay={index * 100 + 100}
                 >
                   <div className="grid lg:grid-cols-6 grid-flow-row-dense items-center mb-4 gap-2">
-                    <div className="icon bg-base-blue rounded-md lg:col-span-1 flex w-3/4">
+                    <div className="bg-base-blue rounded-md col-span-1 w-3/4 max-md:w-full px-4">
                       <img
                         className="m-auto py-4"
                         src="/assets/folder.svg"
                         alt=""
                       />
                     </div>
-                    <div className="Judul text-lg font-semibold text-ftitle lg:col-span-4 col-span-2">
+                    <div className="text-lg font-semibold text-ftitle lg:col-span-4 col-span-2 ">
                       {dataregulasi.attributes.judul}
                     </div>
                     <a
                       href={dataregulasi.attributes.document}
-                      className="lg:col-span-1 col-span-3 border text-center p-4 rounded-full text-ftitle border-ffield  bg-transparent font-semibold hover:bg-ffield"
+                      className="lg:col-span-1 col-span-3 w-full border text-center p-4 rounded-full text-ftitle border-ffield  bg-transparent font-semibold hover:bg-ffield"
                     >
                       Unduh
                     </a>

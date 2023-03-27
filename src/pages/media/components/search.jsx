@@ -2,14 +2,12 @@ import { Capital } from "@/utils/capital";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function Search({ category, type }) {
+export default function Search({ type }) {
   const router = useRouter();
   const pathname = usePathname();
   const path = pathname.split("/");
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(false);
-  const [search, setSearch] = useState("");
-  const [unit, setUnit] = useState("");
 
   useEffect(() => {
     setLoading(true);
@@ -21,6 +19,8 @@ export default function Search({ category, type }) {
       });
   }, []);
 
+  const [search, setSearch] = useState("");
+  const [unit, setUnit] = useState("");
   const changeSearch = (e) => {
     setSearch(e.target.value);
   };
@@ -33,7 +33,6 @@ export default function Search({ category, type }) {
     e.preventDefault();
     router.push(`/media/${path[2]}?query=${search}&unit=${unit}`);
   };
-
   return (
     <div className="flex gap-6 lg:items-center mb-16 mt-8 max-md:mt-4 max-md:mb-8 max-sm:mt-2 max-sm:mb-4 max-md:flex-col">
       <div

@@ -1,0 +1,3 @@
+.grid_form {
+  @apply grid grid-cols-4;
+}

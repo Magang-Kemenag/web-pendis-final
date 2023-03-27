@@ -11,6 +11,7 @@ export default function Articles({ category, searchParams, type }) {
     let search = "";
     let un = "";
     let url = "";
+    console.log(searchParams.unit);
 
     if (searchParams?.query) {
       search = `&filters[title][$containsi]=${searchParams.query}`;
@@ -32,7 +33,7 @@ export default function Articles({ category, searchParams, type }) {
         setData(data.data);
         setLoading(false);
       });
-  }, []);
+  }, [searchParams]);
 
   if (data && Array.from(data).length > 0) {
     return data.map((article, index) => {
