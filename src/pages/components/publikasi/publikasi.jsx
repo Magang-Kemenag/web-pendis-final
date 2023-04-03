@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "@/styles/Home.module.css";
+import DataNull from "@/components/datanull/datanull";
 
 export default function Publikasi() {
   const [data, setData] = useState(null);
@@ -7,7 +8,7 @@ export default function Publikasi() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`${process.env.NEXT_PUBLIC_STRAPI_API}/beasiswas?populate=*`)
+    fetch(`${process.env.NEXT_PUBLIC_STRAPI_API}/publikasis?populate=*`)
       .then((res) => res.json())
       .then((data) => {
         setData(data.data);
@@ -15,18 +16,12 @@ export default function Publikasi() {
       });
   }, []);
   return (
-    <section>
-      <div
-        className={`${styles.section_title} ${styles.title_gap} text-end`}
-        data-aos="fade-down"
-      >
+    <section className="mx-16 flex flex-col gap-12">
+      <div className="text-3xl font-bold text-base-blue text-end">
         Publikasi
       </div>
       <div className="grid grid-cols-2 max-sm:grid-cols-1">
-        <div
-          className="flex flex-col items-start gap-4 max-sm:hidden"
-          data-aos="fade-right"
-        >
+        <div className="flex flex-col items-start gap-4 max-sm:hidden">
           <div className="logo bg-base-blue h-12 w-12 p-2 rounded-lg">
             <img src="/assets/lampu.png" alt="" />
           </div>
@@ -35,14 +30,12 @@ export default function Publikasi() {
             pendidikan dengan memberikan berbagai peluang bantuan beasiswa
           </div>
         </div>
-        <div className="grid grid-cols-3 max-sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-4 max-sm:grid-cols-2 gap-4">
           {data &&
             data.map((publikasi, index) => (
               <div
                 key={publikasi.id}
                 className="rounded-lg flex flex-col justify-center gap-2"
-                data-aos="fade-up"
-                data-aos-delay={index * 100 + 100}
               >
                 <picture>
                   <img

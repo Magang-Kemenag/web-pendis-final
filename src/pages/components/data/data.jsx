@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import styles from "@/styles/Home.module.css";
 
 export default function Data() {
   const [data, setData] = useState(null);
@@ -15,17 +14,9 @@ export default function Data() {
       });
   }, []);
   return (
-    <section>
-      <div
-        className={`${styles.title_center} ${styles.title_gap}`}
-        data-aos="fade-down"
-      >
-        Data
-      </div>
-      <div
-        className="text-2xl font-bold text-ftitle overflow-auto"
-        data-aos="zoom-in"
-      >
+    <section className="flex flex-col gap-4 bg-white py-12">
+      <div className="text-3xl text-center font-bold text-base-blue">Data</div>
+      <div className="text-2xl font-bold text-ftitle overflow-auto">
         {data && (
           <table className="mr-auto ml-auto">
             <thead className="border-b-2">

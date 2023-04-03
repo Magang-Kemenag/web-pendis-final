@@ -9,7 +9,7 @@ export default function ArticlePopular() {
   useEffect(() => {
     setLoading(true);
     fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_API}/articles?sort[0]=views%3Adesc&sort[1]=updatedAt%3Aasc&pagination[pageSize]=3&populate=*`
+      `${process.env.NEXT_PUBLIC_STRAPI_API}/articles?sort[0]=views%3Adesc&sort[1]=updatedAt%3Aasc&pagination[pageSize]=5&populate=*`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -19,7 +19,7 @@ export default function ArticlePopular() {
   }, []);
 
   return (
-    <div className="postingan-terkait mt-8">
+    <div className="">
       <div className="text-2xl font-bold">Populer</div>
       {data &&
         data.map((article) => (
@@ -41,7 +41,7 @@ export default function ArticlePopular() {
             />
             <div className="col-span-2">
               <Link
-                href={`/media/${article.attributes.category.data.attributes.slug}/${article.attributes.slug}`}
+                href={`/media/articles/${article.attributes.slug}`}
                 className="title pt-0 text-ftitle font-bold text-base hover:text-base-blue"
               >
                 {article.attributes.title}

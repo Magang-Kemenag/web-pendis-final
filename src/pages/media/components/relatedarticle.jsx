@@ -20,19 +20,14 @@ export default function RelatedArticle({ slug }) {
     <section>
       <Suspense fallback={<div>loading...</div>}>
         {data?.map((article, index) => (
-          <div
-            key={article.id}
-            data-aos="fade-up"
-            data-aos-delay={index * 100 + 100}
-          >
+          <div key={article.id}>
             <Card
               image={article.attributes.image.data.attributes.url}
               title={article.attributes.title}
-              category={article.attributes.category.data.attributes.name}
-              slugcategory={article.attributes.category.data.attributes.slug}
               date={article.attributes.updatedAt}
               slug={article.attributes.slug}
               alt={article.attributes.image.data.attributes.alternativeText}
+              unit={article.attributes.unit.data.attributes.name}
             />
           </div>
         ))}

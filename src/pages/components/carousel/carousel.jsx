@@ -7,6 +7,7 @@ import { formatDateEn } from "@/utils/formatter";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Image from "next/image";
+import DataNull from "@/components/datanull/datanull";
 
 function Carousel() {
   const [data, setData] = useState(null);
@@ -33,14 +34,14 @@ function Carousel() {
   };
 
   return (
-    <div className="w-full">
-      <div className="container w-full m-auto" data-aos="zoom-in">
+    <div className="mx-12">
+      <div className="w-full">
         <Slider {...settings}>
           {data &&
             data.map((article) => (
               <Link
-                href={`/media/${article.attributes.category.data.attributes.slug}/${article.attributes.slug}`}
-                className="relative h-1/2"
+                href={`/media/articles/${article.attributes.slug}`}
+                className="relative h-1/2 w-full rounded-xl bg-slate-900"
                 key={article.id}
               >
                 <Image
@@ -49,13 +50,13 @@ function Carousel() {
                   width={500}
                   height={500}
                   priority
-                  className="w-full rounded-lg lg:h-[480px] max-md:h-[279px] max-sm:h-[138px] relative"
+                  className="w-full lg:h-[480px] rounded-xl max-md:h-[279px] max-sm:h-[138px] relative"
                 />
-                <div className="text-white absolute left-10 top-80 text-4xl">
-                  {article.attributes.title}
-                </div>
-                <div className="text-white absolute left-10 top-96">
-                  {formatDateEn(article.attributes.updatedAt)}
+                <div className="text-white absolute left-10 top-80 flex flex-col gap-4">
+                  <div className=" top-80 text-4xl">
+                    {article.attributes.title}
+                  </div>
+                  <div>{formatDateEn(article.attributes.updatedAt)}</div>
                 </div>
               </Link>
             ))}

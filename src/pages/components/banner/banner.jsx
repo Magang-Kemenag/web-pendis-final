@@ -1,3 +1,4 @@
+import DataNull from "@/components/datanull/datanull";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Slider from "react-slick";
@@ -27,7 +28,7 @@ export default function Banner() {
     autoplaySpeed: 5000,
   };
   return (
-    <div data-aos="fade-down">
+    <div className="px-12">
       <Slider {...settings}>
         {data &&
           data.map((banner) => (

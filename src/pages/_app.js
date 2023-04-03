@@ -35,7 +35,7 @@ export default function App({ Component, pageProps }) {
     <>
       {loading && <Loader />}
       <Navbar />
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
       <Footer />
     </>
   );

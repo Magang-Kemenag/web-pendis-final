@@ -3,16 +3,20 @@ import styles from "@/styles/Home.module.css";
 import Carousel from "./components/carousel/carousel";
 import UnitKerja from "./components/unit-kerja/unitkerja";
 import Profile from "./components/profile/profile";
-import Infografis from "./components/infografis/infografis";
+import Infografis from "../components/infografis/infografis";
 import ReccentArticle from "./components/article/reccentarticle";
-import ReccentGaleri from "./components/galeri/reccentgaleri";
 import Layanan from "./components/layanan/layanan";
 import Data from "./components/data/data";
 import Beasiswa from "./components/beasiswa/beasiswa";
 import Publikasi from "./components/publikasi/publikasi";
 import Loader from "@/components/loader/loader";
-import MediaSosial from "./components/media-sosial/media-sosial";
+import MediaSosial from "../components/media-sosial/media-sosial";
 import Banner from "./components/banner/banner";
+import Twitter from "../components/media-sosial/twitter";
+import ArticlePopular from "./media/components/articlepopular";
+import ReccentImage from "./components/galeri/reccentimage";
+import ReccentVideo from "./components/galeri/reccentvideo";
+import Announce from "./components/announcement/announce";
 
 export default function Home() {
   return (
@@ -24,20 +28,30 @@ export default function Home() {
         <link rel="icon" href="/assets/pendis-kemenag.png" />
       </Head>
       <main>
-        <div className={styles.base}>
+        <div className="flex flex-col gap-8">
           <Carousel />
           <UnitKerja />
           <Banner />
-          <section className="mt-16 mb-16">
-            <div className="profil grid grid-cols-2 max-md:grid-cols-1 gap-4">
-              <Infografis />
-              <Profile />
+          <Profile />
+          <div className="grid grid-cols-3 px-12 gap-12">
+            <div className="col-span-1 h-full">
+              <Announce />
             </div>
-          </section>
-          <ReccentArticle />
-          <ReccentGaleri />
-          <MediaSosial />
+            <div className="col-span-2 h-full">
+              <ReccentArticle />
+            </div>
+          </div>
           <Layanan />
+          <div className="grid grid-cols-3 px-12 gap-12">
+            <div className="col-span-2">
+              <ReccentImage />
+              <ReccentVideo />
+            </div>
+            <div>
+              <Infografis />
+              <Twitter />
+            </div>
+          </div>
           <Data />
           <Beasiswa />
           <Publikasi />

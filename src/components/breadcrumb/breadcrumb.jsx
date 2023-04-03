@@ -8,10 +8,7 @@ export default function Breadcrumb() {
   const path = pathname.split("/");
 
   return (
-    <div
-      className="flex text-base text-fbody font-bold gap-2"
-      data-aos="fade-down"
-    >
+    <div className="flex text-base text-fbody font-bold gap-2">
       <button
         onClick={() => router.replace(`/${path[1]}`)}
         className="text-base-blue"

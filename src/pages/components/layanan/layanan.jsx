@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Slider from "react-slick";
-import styles from "@/styles/Home.module.css";
 import Image from "next/image";
+import DataNull from "@/components/datanull/datanull";
 
 export default function Layanan() {
   const [data, setData] = useState(null);
@@ -55,34 +55,27 @@ export default function Layanan() {
   };
 
   return (
-    <div>
-      <div
-        className={`${styles.title_center} ${styles.title_gap}`}
-        data-aos="fade-down"
-      >
+    <div className="flex flex-col gap-8 bg-white py-12">
+      <div className="text-3xl text-center font-bold text-base-blue">
         Layanan
       </div>
-      <div data-aos="fade-up">
-        <Slider {...settings}>
-          {data &&
-            data.map((layanan) => (
-              <div key={layanan.id}>
-                <a href={layanan.attributes.link}>
-                  <Image
-                    src={`${process.env.NEXT_PUBLIC_STRAPI}${layanan.attributes.image.data.attributes.url}`}
-                    alt={
-                      layanan.attributes.image.data.attributes.alternativeText
-                    }
-                    width={500}
-                    height={500}
-                    priority
-                    className="rounded-lg lg:w-44 max-md:w-52 m-auto"
-                  />
-                </a>
-              </div>
-            ))}
-        </Slider>
-      </div>
+      <Slider {...settings}>
+        {data &&
+          data.map((layanan) => (
+            <div key={layanan.id}>
+              <a href={layanan.attributes.link}>
+                <Image
+                  src={`${process.env.NEXT_PUBLIC_STRAPI}${layanan.attributes.image.data.attributes.url}`}
+                  alt={layanan.attributes.image.data.attributes.alternativeText}
+                  width={500}
+                  height={500}
+                  priority
+                  className="rounded-lg lg:w-44 max-md:w-52 m-auto"
+                />
+              </a>
+            </div>
+          ))}
+      </Slider>
     </div>
   );
 }

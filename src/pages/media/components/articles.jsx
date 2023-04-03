@@ -7,11 +7,10 @@ export default function Articles({ category, searchParams, type }) {
 
   useEffect(() => {
     setLoading(true);
-    let filter = `filters[category][slug][$eq]=${category}`;
     let search = "";
     let un = "";
+    let page = "";
     let url = "";
-    console.log(searchParams.unit);
 
     if (searchParams?.query) {
       search = `&filters[title][$containsi]=${searchParams.query}`;
@@ -21,9 +20,13 @@ export default function Articles({ category, searchParams, type }) {
       un = `&filters[unit][slug][$eq]=${searchParams.unit}`;
     }
 
-    if (type == "articles") {
-      url = `${process.env.NEXT_PUBLIC_STRAPI_API}/${type}?${filter}${un}${search}&populate=*`;
-    } else if (type == "buletins") {
+    if (searchParams?.page) {
+      page = `&pagination[page]=${searchParams.page}&pagination[pageSize]=9`;
+    }
+
+    if (type == "articles" || type == "announcements") {
+      url = `${process.env.NEXT_PUBLIC_STRAPI_API}/${type}?${un}${search}${page}&populate=*`;
+    } else if (type == "buletins" || type == "kolom-opinis") {
       url = `${process.env.NEXT_PUBLIC_STRAPI_API}/${type}?${search}&populate=*`;
     }
 
@@ -39,37 +42,42 @@ export default function Articles({ category, searchParams, type }) {
     return data.map((article, index) => {
       if (type == "articles") {
         return (
-          <div
-            key={article.id}
-            data-aos="fade-up"
-            data-aos-delay={index * 100 + 100}
-          >
+          <div key={article.id}>
             <Card
               image={article.attributes.image.data.attributes.url}
               title={article.attributes.title}
-              category={article.attributes.category.data.attributes.name}
-              slugcategory={article.attributes.category.data.attributes.slug}
               date={article.attributes.updatedAt}
               slug={article.attributes.slug}
               alt={article.attributes.image.data.attributes.alternativeText}
+              unit={article.attributes.unit.data.attributes.name}
+              type={type}
             />
           </div>
         );
-      } else if (type == "buletins") {
+      } else if (type == "announcements") {
         return (
-          <div
-            key={article.id}
-            data-aos="fade-up"
-            data-aos-delay={index * 100 + 100}
-          >
+          <div key={article.id}>
+            <Card
+              image={article.attributes.image.data[0].attributes.url}
+              title={article.attributes.title}
+              date={article.attributes.updatedAt}
+              slug={article.attributes.slug}
+              alt={article.attributes.image.data[0].attributes.alternativeText}
+              unit={article.attributes.unit.data.attributes.name}
+              type={type}
+            />
+          </div>
+        );
+      } else if (type == "buletins" || type == "kolom-opinis") {
+        return (
+          <div key={article.id}>
             <Card
               image={article.attributes.image.data.attributes.url}
               title={article.attributes.title}
-              category="buletin"
-              slugcategory="buletin"
               date={article.attributes.updatedAt}
               slug={article.attributes.slug}
               alt={article.attributes.image.data.attributes.alternativeText}
+              type={type}
             />
           </div>
         );

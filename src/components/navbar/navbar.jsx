@@ -9,7 +9,7 @@ import Drawer from "../drawer/drawer";
 export default function Navbar() {
   const currentUrl = usePathname();
   return (
-    <div className="navbar bg-white px-16 max-md:px-8 max-sm:px-2 flex justify-between w-full fixed top-0 z-50">
+    <div className="navbar bg-white px-16 max-md:px-8 max-sm:px-2 flex justify-between w-full top-0 border-b ">
       <Link href="/" className="flex px-2 gap-4">
         <img src="/assets/pendis-kemenag.png" alt="" className=" p-0" />
         <div className="bg-ftitle h-16 w-[3px]"></div>
@@ -34,20 +34,6 @@ export default function Navbar() {
             >
               Profil
             </Link>
-            <ul className="p-2 bg-white border border-ftitle z-50">
-              <li>
-                <Link href="/profil/sejarah">Sejarah</Link>
-              </li>
-              <li>
-                <Link href="/profil/struktur">Struktur Organisasi</Link>
-              </li>
-              <li>
-                <Link href="/profil/tupoksi">Tupoksi</Link>
-              </li>
-              <li>
-                <Link href="/profil/arah-kebijakan">Arah Kebijakan</Link>
-              </li>
-            </ul>
           </li>
           <li tabIndex={0}>
             <Link
@@ -56,23 +42,6 @@ export default function Navbar() {
             >
               Media
             </Link>
-            <ul className="p-2 bg-white border border-ftitle z-50">
-              <li>
-                <Link href="/media/artikel">Artikel</Link>
-              </li>
-              <li>
-                <Link href="/media/laporan">Laporan</Link>
-              </li>
-              <li>
-                <Link href="/media/berita">Berita</Link>
-              </li>
-              <li>
-                <Link href="/media/pengumuman">Pengumuman</Link>
-              </li>
-              <li>
-                <Link href="/media/buletin">Buletin</Link>
-              </li>
-            </ul>
           </li>
           <li tabIndex={0}>
             <Link
@@ -83,23 +52,6 @@ export default function Navbar() {
             >
               Unit Kerja
             </Link>
-            <ul className="p-2 bg-white border border-ftitle z-50">
-              <li>
-                <Link href="/unit-kerja/ptki">PTKI</Link>
-              </li>
-              <li>
-                <Link href="/unit-kerja/pd-pontren">PD-Pontren</Link>
-              </li>
-              <li>
-                <Link href="/unit-kerja/gtk">GTK</Link>
-              </li>
-              <li>
-                <Link href="/unit-kerja/kskk">KSKK</Link>
-              </li>
-              <li>
-                <Link href="/unit-kerja/pai">PAI</Link>
-              </li>
-            </ul>
           </li>
           <li>
             <Link
@@ -118,14 +70,6 @@ export default function Navbar() {
             >
               Galeri
             </Link>
-            <ul className="p-2 bg-white border border-ftitle z-50">
-              <li>
-                <Link href="/galeri/foto">Foto</Link>
-              </li>
-              <li>
-                <Link href="/galeri/video">Video</Link>
-              </li>
-            </ul>
           </li>
         </ul>
       </div>

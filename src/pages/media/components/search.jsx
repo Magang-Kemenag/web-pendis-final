@@ -31,22 +31,21 @@ export default function Search({ type }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    router.push(`/media/${path[2]}?query=${search}&unit=${unit}`);
+    router.push(`/${path[1]}/${path[2]}?query=${search}&unit=${unit}`);
   };
   return (
     <div className="flex gap-6 lg:items-center mb-16 mt-8 max-md:mt-4 max-md:mb-8 max-sm:mt-2 max-sm:mb-4 max-md:flex-col">
-      <div
-        className="title text-base-blue text-4xl font-bold"
-        data-aos="fade-right"
-      >
+      <div className="title text-base-blue text-4xl font-bold">
         {Capital(2)}
       </div>
       <form
         className="search flex gap-4 md:gap-2 lg:flex-row max-sm:flex-col w-full justify-end max-md:justify-between"
         onSubmit={handleSubmit}
-        data-aos="fade-left"
       >
-        {type === "buletins" ? null : (
+        {type === "buletins" ||
+        type === "kolom-opinis" ||
+        type === "videos" ||
+        type === "images" ? null : (
           <div className="filter" onChange={changeUnit}>
             <select
               className="select select-bordered border-2 bg-[#ffffff] border-ffield rounded-md h-12 max-md:w-full"

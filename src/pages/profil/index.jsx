@@ -1,42 +1,33 @@
 import Link from "next/link";
 import styles from "@/styles/Home.module.css";
-import stylesprofil from "./profile.module.css";
 import React from "react";
-import ReactMarkdown from "react-markdown";
+import VideoProfil from "./components/videoprofil";
+import ComponentsProfil from "./components/componentsprofil";
+import StrukturComponent from "./struktur/components/strukturcomponent";
 
 export default function Page({ data }) {
   return (
-    <div className={styles.base}>
-      {data &&
-        data.map((profile) => (
-          <>
-            <div key={profile.id}>
-              <div className="mb-16 mt-8 max-md:mt-4 max-md:mb-8 max-sm:mt-2 max-sm:mb-4">
-                <div
-                  className="title text-base-blue text-4xl font-bold"
-                  data-aos="fade-down"
-                >
-                  {profile.attributes.title}
-                </div>
+    <div className="flex flex-col gap-12">
+      <VideoProfil />
+      <div className="px-12">
+        <StrukturComponent category="pendis" />
+        <div className="flex mt-8 justify-center">
+          <Link
+            href={`/profil/struktur/pendis`}
+            className="flex border-ffield border-2 py-5 px-9 rounded-full bg-transparent hover:bg-ffield"
+          >
+            <div className="max-sm:m-auto flex gap-2">
+              <div className="text-ftitle font-semibold">
+                Lihat Selengkapnya
               </div>
-              <div
-                className="text-ftitle line-clamp-6 leading-9"
-                data-aos="fade-left"
-              >
-                <ReactMarkdown>{profile.attributes.content}</ReactMarkdown>
+              <div className="icon">
+                <img src="/assets/arrow-right-black.svg" alt="" />
               </div>
             </div>
-            <div data-aos="fade-up">
-              <Link
-                href={`/profil/${profile.attributes.slug}`}
-                className={stylesprofil.link}
-              >
-                <div className={stylesprofil.text_link}>Baca Selengkapnya</div>
-                <img src="/assets/Arrow-forward.svg" alt="" />
-              </Link>
-            </div>
-          </>
-        ))}
+          </Link>
+        </div>
+      </div>
+      <ComponentsProfil />
     </div>
   );
 }

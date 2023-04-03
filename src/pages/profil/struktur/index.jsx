@@ -1,29 +1,23 @@
+import Breadcrumb from "@/components/breadcrumb/breadcrumb";
 import styles from "@/styles/Home.module.css";
 import Image from "next/image";
+import SideMenu from "../components/sidemenu";
+import SidemenuStruktur from "./components/sidemenustruktur";
+import StrukturComponent from "./components/strukturcomponent";
 
 export default function Page({ data }) {
-  console.log(data);
   return (
-    <div className={styles.base}>
-      {data.map((struktur) => (
-        <Image
-          src={`${process.env.NEXT_PUBLIC_STRAPI}${struktur.attributes.Image.data.attributes.url}`}
-          width={500}
-          height={500}
-          alt=""
-        />
-      ))}
+    <div className="bg-white px-12 flex flex-col gap-16 pt-8">
+      <Breadcrumb />
+      <div className="grid grid-cols-3 gap-4">
+        <div className="col-span-2">
+          <StrukturComponent category="pendis" />
+        </div>
+        <div className="flex flex-col gap-4">
+          <SidemenuStruktur />
+          <SideMenu />
+        </div>
+      </div>
     </div>
   );
-}
-
-export async function getServerSideProps() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_API}/strukturs?populate=*`
-  );
-  const articles = await res.json();
-  const data = articles.data;
-  console.log(data);
-
-  return { props: { data } };
 }

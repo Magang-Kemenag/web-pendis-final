@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-[#ffffff] border-t-2 mt-4">
+    <footer className="bg-[#ffffff] border-t-2">
       <div className="mx-16 lg:mt-10 max-md:mx-10 max-md:mt-8 max-sm:mx-4 max-sm:mt-4">
         <div className="flex justify-between max-md:flex-col">
           <div>

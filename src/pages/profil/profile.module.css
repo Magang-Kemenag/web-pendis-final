@@ -1,7 +1,0 @@
-.link {
-  @apply flex justify-end gap-3 mt-9;
-}
-
-.text_link {
-  @apply text-base-blue font-bold text-base;
-}

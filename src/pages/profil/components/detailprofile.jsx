@@ -20,13 +20,15 @@ export default function DetailProfil({ title }) {
     <div>
       {data &&
         data.map((profile) => (
-          <div key={profile.id}>
-            <div className="mb-16 mt-8 max-md:mt-4 max-md:mb-8 max-sm:mt-2 max-sm:mb-4">
+          <div key={profile.id} className="flex flex-col gap-8">
+            <div>
               <div className="title text-base-blue text-4xl font-bold">
                 <p className="leading-8">{profile.attributes.title}</p>
               </div>
             </div>
-            <ReactMarkdown>{profile.attributes.content}</ReactMarkdown>
+            <div className="text-ftitle">
+              <ReactMarkdown>{profile.attributes.content}</ReactMarkdown>
+            </div>
           </div>
         ))}
     </div>

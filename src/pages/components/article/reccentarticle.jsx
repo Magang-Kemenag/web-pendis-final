@@ -1,7 +1,8 @@
-import Card from "@/components/card/card";
 import Link from "next/link";
 import { Suspense, useEffect, useState } from "react";
-import styles from "@/styles/Home.module.css";
+import { formatDateEn } from "@/utils/formatter";
+import Image from "next/image";
+import DataNull from "@/components/datanull/datanull";
 
 export default function ReccentArticle() {
   const [data, setData] = useState(null);
@@ -19,42 +20,53 @@ export default function ReccentArticle() {
       });
   }, []);
   return (
-    <section>
-      <div className={styles.section_base}>
-        <div className={styles.section_title} data-aos="fade-right">
-          Terkini
+    <section className="flex flex-col justify-between h-full">
+      <div className="flex flex-col gap-8">
+        <div className="text-2xl text-base-blue font-bold">Terkini</div>
+        <div className="w-full h-0.5 bg-ftitle"></div>
+        <div className="grid grid-cols-2 gap-2">
+          <Suspense fallback={<div>loading...</div>}>
+            {data?.map((article) => (
+              <div key={article.id}>
+                <div
+                  className="mt-6 grid grid-cols-3 items-start gap-2"
+                  key={article.id}
+                >
+                  <Image
+                    src={`${process.env.NEXT_PUBLIC_STRAPI}${article.attributes.image.data.attributes.url}`}
+                    alt={
+                      article.attributes.image.data.attributes.alternativeText
+                    }
+                    width={
+                      article.attributes.image.data.attributes.formats.thumbnail
+                        .width
+                    }
+                    height={
+                      article.attributes.image.data.attributes.formats.thumbnail
+                        .height
+                    }
+                    className="rounded-md"
+                  />
+                  <div className="col-span-2">
+                    <div className="date text-sm">
+                      {formatDateEn(article.attributes.updatedAt)}
+                    </div>
+                    <Link
+                      href={`/media/articles/${article.attributes.slug}`}
+                      className="title pt-0 text-ftitle font-bold text-base hover:text-base-blue"
+                    >
+                      {article.attributes.title}
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </Suspense>
         </div>
-        <Link
-          href="/media"
-          className={styles.btn_standard}
-          data-aos="fade-left"
-        >
-          Selengkapnya
-        </Link>
       </div>
-      <div className={styles.article_base}>
-        <Suspense fallback={<div>loading...</div>}>
-          {data?.map((article, index) => (
-            <div
-              key={article.id}
-              data-aos="fade-up"
-              data-aos-delay={index * 100 + 100}
-            >
-              <Card
-                image={article.attributes.image.data.attributes.url}
-                title={article.attributes.title}
-                category={article.attributes.category.data.attributes.name}
-                slugcategory={article.attributes.category.data.attributes.slug}
-                date={article.attributes.updatedAt}
-                slug={article.attributes.slug}
-                alt={article.attributes.image.data.attributes.alternativeText}
-              />
-            </div>
-          ))}
-        </Suspense>
-      </div>
-      <Link href="/media">
-        <div className={styles.btn_standard_responsive}>Selengkapnya</div>
+      <Link href="/media/artikel" className="flex gap-1 justify-end items-end">
+        <div className="font-bold text-base-blue">Lihat Selengkapnya</div>
+        <img src="/assets/Arrow-forward.svg" alt="" />
       </Link>
     </section>
   );

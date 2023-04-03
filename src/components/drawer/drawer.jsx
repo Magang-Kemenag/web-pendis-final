@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 export default function Drawer() {
   const currentUrl = usePathname();
   return (
-    <div className="drawer drawer-end h-16 lg:hidden flex">
+    <div className="drawer drawer-end h-16 lg:hidden flex z-50">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         <label

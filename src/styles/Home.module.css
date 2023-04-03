@@ -1,5 +1,5 @@
 .base {
-  @apply mx-16 lg:mt-36 max-md:mt-32 max-sm:mt-28 max-md:mx-10 max-sm:mx-4 bg-[#FAFAFA];
+  @apply bg-white;
 }
 .section_base {
   @apply flex justify-between items-center mb-16 max-md:mt-16 max-md:mb-8 max-sm:mt-8 max-sm:mb-4;
@@ -24,5 +24,5 @@
   @apply mb-16 mt-32 max-md:mt-16 max-md:mb-8 max-sm:mt-8 max-sm:mb-4;
 }
 .beasiswa_publikasi {
-  @apply text-center font-semibold text-ftitle text-lg hover:text-base-blue h-12;
+  @apply text-center font-semibold text-ftitle text-sm hover:text-base-blue h-12;
 }
