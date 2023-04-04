@@ -9,7 +9,6 @@ export async function getStaticPaths() {
   const paths = data.map((post) => ({
     params: { slug: post.attributes.slug },
   }));
-  console.log(paths);
 
   return { paths, fallback: false };
 }

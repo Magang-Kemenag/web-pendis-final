@@ -50,7 +50,7 @@ function Carousel() {
                   width={500}
                   height={500}
                   priority
-                  className="w-full lg:h-[480px] rounded-xl max-md:h-[279px] max-sm:h-[138px] relative"
+                  className="w-full rounded-xl relative"
                 />
                 <div className="text-white absolute left-10 top-80 flex flex-col gap-4">
                   <div className=" top-80 text-4xl">

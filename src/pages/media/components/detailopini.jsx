@@ -41,6 +41,7 @@ export default function DetailOpini({
                   width={500}
                   height={500}
                   className="w-full rounded-lg"
+                  priority
                 />
               ))}
             </div>

@@ -9,11 +9,8 @@ import Layanan from "./components/layanan/layanan";
 import Data from "./components/data/data";
 import Beasiswa from "./components/beasiswa/beasiswa";
 import Publikasi from "./components/publikasi/publikasi";
-import Loader from "@/components/loader/loader";
-import MediaSosial from "../components/media-sosial/media-sosial";
 import Banner from "./components/banner/banner";
 import Twitter from "../components/media-sosial/twitter";
-import ArticlePopular from "./media/components/articlepopular";
 import ReccentImage from "./components/galeri/reccentimage";
 import ReccentVideo from "./components/galeri/reccentvideo";
 import Announce from "./components/announcement/announce";
@@ -33,21 +30,21 @@ export default function Home() {
           <UnitKerja />
           <Banner />
           <Profile />
-          <div className="grid grid-cols-3 px-12 gap-12">
-            <div className="col-span-1 h-full">
+          <div className="grid lg:grid-cols-3 md:grid-cols-1 px-12 gap-12">
+            <div className="lg:col-span-1 h-full">
               <Announce />
             </div>
-            <div className="col-span-2 h-full">
+            <div className="lg:col-span-2 h-full">
               <ReccentArticle />
             </div>
           </div>
           <Layanan />
-          <div className="grid grid-cols-3 px-12 gap-12">
-            <div className="col-span-2">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 px-12 gap-12">
+            <div className="lg:col-span-2">
               <ReccentImage />
               <ReccentVideo />
             </div>
-            <div>
+            <div className="flex flex-col gap-4">
               <Infografis />
               <Twitter />
             </div>

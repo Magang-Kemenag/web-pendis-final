@@ -11,7 +11,6 @@ export default function LongCard({
   unit,
   type,
 }) {
-  console.log(image);
   return (
     <div className="grid grid-cols-3 items-start gap-2 border-2 rounded-lg p-2">
       <Image
@@ -20,6 +19,7 @@ export default function LongCard({
         height={500}
         alt={alt}
         className={`rounded-lg `}
+        priority
       />
       <div className="col-span-2">
         <div className="text-ftitle">{unit}</div>

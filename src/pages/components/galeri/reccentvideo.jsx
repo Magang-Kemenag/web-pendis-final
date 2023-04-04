@@ -38,6 +38,7 @@ export default function ReccentVideo() {
                 height={500}
                 alt={data[0].attributes.alternativeText}
                 className={stylesgaleri.image}
+                priority
               />
               <p className="font-bold text-ftitle">{image.attributes.title}</p>
             </div>

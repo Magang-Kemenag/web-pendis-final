@@ -1,4 +1,5 @@
 import styles from "@/styles/Home.module.css";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function PublikasiComponent() {
@@ -24,12 +25,13 @@ export default function PublikasiComponent() {
               key={publikasi.id}
               className="rounded-lg flex items-center gap-3 border"
             >
-              <img
+              <Image
                 src={`${process.env.NEXT_PUBLIC_STRAPI}${publikasi.attributes.image.data.attributes.url}`}
                 alt={publikasi.attributes.image.data.attributes.alternativeText}
                 width={120}
                 height={120}
                 className="rounded-lg"
+                priority
               />
               <a
                 href={publikasi.attributes.link}

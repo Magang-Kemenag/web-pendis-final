@@ -27,6 +27,7 @@ function Profile() {
             height={300}
             width={300}
             className="rounded-lg"
+            priority
           />
           <div className="bg-white rounded-sm p-4 buttom-0 text-ftitle text-center">
             <div className="text-lg font-semibold">DIREKTUR JENDERAL</div>

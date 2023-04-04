@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "@/styles/Home.module.css";
 import DataNull from "@/components/datanull/datanull";
+import Image from "next/image";
 
 export default function Publikasi() {
   const [data, setData] = useState(null);
@@ -37,16 +38,15 @@ export default function Publikasi() {
                 key={publikasi.id}
                 className="rounded-lg flex flex-col justify-center gap-2"
               >
-                <picture>
-                  <img
-                    src={`${process.env.NEXT_PUBLIC_STRAPI}${publikasi.attributes.image.data.attributes.url}`}
-                    alt={
-                      publikasi.attributes.image.data.attributes.alternativeText
-                    }
-                    width={500}
-                    height={500}
-                  />
-                </picture>
+                <Image
+                  src={`${process.env.NEXT_PUBLIC_STRAPI}${publikasi.attributes.image.data.attributes.url}`}
+                  alt={
+                    publikasi.attributes.image.data.attributes.alternativeText
+                  }
+                  width={500}
+                  height={500}
+                  priority
+                />
                 <a
                   href={publikasi.attributes.link}
                   className={styles.beasiswa_publikasi}

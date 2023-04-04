@@ -24,7 +24,7 @@ export default function ReccentArticle() {
       <div className="flex flex-col gap-8">
         <div className="text-2xl text-base-blue font-bold">Terkini</div>
         <div className="w-full h-0.5 bg-ftitle"></div>
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid lg:grid-cols-2 md:grid-cols-1 gap-2">
           <Suspense fallback={<div>loading...</div>}>
             {data?.map((article) => (
               <div key={article.id}>
@@ -46,6 +46,7 @@ export default function ReccentArticle() {
                         .height
                     }
                     className="rounded-md"
+                    priority
                   />
                   <div className="col-span-2">
                     <div className="date text-sm">

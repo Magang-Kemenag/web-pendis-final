@@ -46,6 +46,7 @@ export default function Announce() {
                         .thumbnail.height
                     }
                     className="rounded-md"
+                    priority
                   />
                   <div className="col-span-2">
                     <div className="date text-sm">

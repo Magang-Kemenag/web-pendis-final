@@ -31,6 +31,7 @@ export default function Beasiswa() {
                   }
                   width={250}
                   height={250}
+                  priority
                 />
                 <a
                   href={beasiswa.attributes.link}

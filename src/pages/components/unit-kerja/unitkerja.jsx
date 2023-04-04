@@ -1,4 +1,5 @@
 import DataNull from "@/components/datanull/datanull";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -21,10 +22,11 @@ export default function UnitKerja() {
           {data &&
             data.map((unit, index) => (
               <Link key={unit.id} href={`/unit-kerja/${unit.attributes.slug}`}>
-                <img
+                <Image
                   src={`${process.env.NEXT_PUBLIC_STRAPI}${unit.attributes.image.data.attributes.url}`}
                   alt=""
                   className="rounded-lg"
+                  priority
                 />
               </Link>
             ))}

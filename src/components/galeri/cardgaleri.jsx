@@ -10,6 +10,7 @@ export default function CardGaleri({ image, alt, title, slug }) {
         height={500}
         alt={alt}
         className={`rounded-lg w-full h-[180px]`}
+        priority
       />
       <Link href={`/galeri/video/${slug}`}>
         <div className="font-bold text-lg text-ftitle">{title}</div>

@@ -36,22 +36,6 @@ export default function Detail({
   id,
 }) {
   const tags = tag ? tag.split(",") : [];
-  // const [dataTag, setDataTag] = useState({});
-
-  // useEffect(() => {
-  //   setDataTag(tags);
-  //   axios
-  //     .post("http://localhost:1337/api/tags", {
-  //       data: {
-  //       },
-  //     })
-  //     .then((response) => {
-  //       console.log(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }, [tags]);
   return (
     <div className="px-12">
       <div className="text-ftitle flex flex-col">
@@ -107,8 +91,8 @@ export default function Detail({
               <div className="flex flex-row-5 gap-2">
                 {tag &&
                   tags.map((tag) => (
-                    <Link href={`/media/tags/${tag}`}>
-                      <div className="bg-white border rounded-md px-2">
+                    <Link href={`/media/tags/${tag}`} key={tag.id}>
+                      <div className="bg-white border rounded-md px-2 hover:bg-base-green hover:text-white">
                         #{tag}
                       </div>
                     </Link>

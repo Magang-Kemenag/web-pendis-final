@@ -29,7 +29,8 @@ export default function Subbag({ id }) {
             height={500}
             width={500}
             className="rounded-md"
-            alt=""
+            alt={struktur.attributes.image.data.attributes.alternativeText}
+            priority
           />
           <div className="text-center text-ftitle font-semibold h-20">
             {struktur.attributes.name}

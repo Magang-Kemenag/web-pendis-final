@@ -38,6 +38,7 @@ export default function ArticlePopular() {
                   .height
               }
               className="rounded-md"
+              priority
             />
             <div className="col-span-2">
               <Link

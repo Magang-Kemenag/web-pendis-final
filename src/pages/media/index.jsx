@@ -13,8 +13,8 @@ export default function Media({ data }) {
     <>
       <div className="px-12 bg-white pt-12">
         {/* <HeaderMedia /> */}
-        <div className="grid grid-cols-3 gap-4">
-          <div className="col-span-2 flex flex-col gap-12">
+        <div className="grid lg:grid-cols-3 md:grid-cols-1 gap-4">
+          <div className="lg:col-span-2 flex flex-col gap-12">
             <Reccent type="articles" />
             <ReccentPengumuman type="announcements" />
             <ReccentBuletin type="buletins" />

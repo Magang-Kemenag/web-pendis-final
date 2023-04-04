@@ -62,7 +62,6 @@ export default function Data() {
         <a
           href="http://emispendis.kemenag.go.id/dashboard/"
           className="flex border-ffield border-2 py-5 px-9 rounded-full bg-transparent hover:bg-ffield"
-          data-aos="fade-up"
         >
           <div className="max-sm:m-auto flex gap-2">
             <div className="text-ftitle font-semibold">Lihat Selengkapnya</div>

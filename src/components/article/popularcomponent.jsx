@@ -42,6 +42,7 @@ export default function PopularComponent() {
                     .height
                 }
                 className="rounded-md"
+                priority
               />
               <div className="col-span-2">
                 <Link
