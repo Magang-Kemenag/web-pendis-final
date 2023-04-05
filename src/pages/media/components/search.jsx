@@ -31,7 +31,11 @@ export default function Search({ type }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    router.push(`/${path[1]}/${path[2]}?query=${search}&unit=${unit}`);
+    if (search || unit) {
+      router.push(`/${path[1]}/${path[2]}?query=${search}&unit=${unit}`);
+    } else {
+      router.push(`/${path[1]}/${path[2]}`);
+    }
   };
   return (
     <div className="flex gap-6 lg:items-center mb-16 mt-8 max-md:mt-4 max-md:mb-8 max-sm:mt-2 max-sm:mb-4 max-md:flex-col">

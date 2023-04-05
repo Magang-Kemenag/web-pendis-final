@@ -1,3 +1,4 @@
+import DataNull from "@/components/datanull/datanull";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
@@ -17,7 +18,7 @@ export default function ComponentsProfil() {
   }, []);
   return (
     <div className="flex flex-col gap-12 px-12 bg-white py-12">
-      {data &&
+      {data && data.length > 0 ? (
         data.map((profile) => (
           <>
             <div key={profile.id} className="flex flex-col gap-8">
@@ -42,7 +43,10 @@ export default function ComponentsProfil() {
               </Link>
             </div>
           </>
-        ))}
+        ))
+      ) : (
+        <DataNull />
+      )}
     </div>
   );
 }

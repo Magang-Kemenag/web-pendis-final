@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Pagination from "@/components/pagination/pagination";
 import Link from "next/link";
 import CardGaleri from "@/components/galeri/cardgaleri";
+import DataNull from "@/components/datanull/datanull";
 
 export default function ImageComponent() {
   const [data, setData] = useState(null);
@@ -22,18 +23,23 @@ export default function ImageComponent() {
   }, []);
 
   return (
-    <div>
-      <section className={styles.base_section}>
+    <div className="flex flex-col gap-4">
+      <section className="flex flex-col gap-4">
         <div className="title text-base-blue text-4xl font-bold">Foto</div>
-        <div className="artikel grid grid-cols-2 gap-4">
-          {data &&
+        <div className="artikel grid grid-cols-2 max-md:grid-cols-1 gap-4">
+          {data && data.length > 0 ? (
             data.map((image) => (
-              <CardGaleri
-                image={image.attributes.image.data.attributes.url}
-                alt={image.attributes.image.data.attributes.alternativeText}
-                title={image.attributes.title}
-              />
-            ))}
+              <div key={image.id}>
+                <CardGaleri
+                  image={image.attributes.image.data.attributes.url}
+                  alt={image.attributes.image.data.attributes.alternativeText}
+                  title={image.attributes.title}
+                />
+              </div>
+            ))
+          ) : (
+            <DataNull />
+          )}
         </div>
       </section>
       <div className="flex mt-8 justify-center">

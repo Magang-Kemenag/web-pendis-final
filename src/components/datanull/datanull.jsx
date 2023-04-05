@@ -1,3 +1,7 @@
 export default function DataNull() {
-  return <div>IS EMPTY</div>;
+  return (
+    <div className="text-base font-medium text-ftitle">
+      Tidak ada data ditemukan
+    </div>
+  );
 }

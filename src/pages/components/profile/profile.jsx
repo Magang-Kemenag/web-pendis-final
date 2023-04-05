@@ -1,3 +1,4 @@
+import DataNull from "@/components/datanull/datanull";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense, useEffect, useState } from "react";
@@ -26,6 +27,7 @@ function Profile() {
             src="/assets/Dirjen.png"
             height={300}
             width={300}
+            alt=""
             className="rounded-lg"
             priority
           />
@@ -36,10 +38,12 @@ function Profile() {
         </div>
         <div className="text-white">
           <div className="title text-4xl font-bold">Profil</div>
-          {data && data[0] && (
+          {data && data[0] && data.length > 0 ? (
             <p className=" mt-4 leading-9 line-clamp-6">
               {data[0].attributes.content}
             </p>
+          ) : (
+            <DataNull />
           )}
 
           <div className="flex flex-row-reverse mt-8">

@@ -31,9 +31,9 @@ export default function Publikasi() {
             pendidikan dengan memberikan berbagai peluang bantuan beasiswa
           </div>
         </div>
-        <div className="grid grid-cols-4 max-sm:grid-cols-2 gap-4">
-          {data &&
-            data.map((publikasi, index) => (
+        {data && data.length > 0 ? (
+          <div className="grid grid-cols-4 max-sm:grid-cols-2 gap-4">
+            {data.map((publikasi, index) => (
               <div
                 key={publikasi.id}
                 className="rounded-lg flex flex-col justify-center gap-2"
@@ -55,7 +55,10 @@ export default function Publikasi() {
                 </a>
               </div>
             ))}
-        </div>
+          </div>
+        ) : (
+          <DataNull />
+        )}
       </div>
     </section>
   );

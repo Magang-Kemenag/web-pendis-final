@@ -19,7 +19,7 @@ export default function Subbag({ id }) {
   return (
     data &&
     data.map((struktur) => (
-      <div className="flex flex-col gap-4 items-center">
+      <div className="flex flex-col gap-4 items-center" key={struktur.id}>
         <div className="font-bold text-lg text-ftitle text-center h-10">
           {struktur.attributes.title}
         </div>

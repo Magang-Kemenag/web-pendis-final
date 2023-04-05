@@ -1,3 +1,4 @@
+import DataNull from "@/components/datanull/datanull";
 import LongCard from "@/components/longcard/longcard";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -19,9 +20,9 @@ export default function ReccentOpini({ type }) {
   }, []);
   return (
     <div className="flex flex-col gap-4">
-      <div className="font-bold text-base-blue text-3xl">Pengumuman</div>
+      <div className="font-bold text-base-blue text-3xl">Kolom Opini</div>
       <div className="flex flex-col gap-2">
-        {data &&
+        {data && data.length > 0 ? (
           data.map((announce) => (
             <LongCard
               title={announce.attributes.title}
@@ -31,7 +32,10 @@ export default function ReccentOpini({ type }) {
               slug={announce.attributes.slug}
               type={type}
             />
-          ))}
+          ))
+        ) : (
+          <DataNull />
+        )}
       </div>
       <div className="flex mt-8 justify-center">
         <Link

@@ -31,14 +31,14 @@ export default function Infografis() {
   };
 
   return (
-    <div className="bg-white rounded-xl border h-[550px] p-4">
+    <div className="bg-white rounded-xl border p-4 w-full">
       <div className="border-b">
         <div className="text-ftitle text-lg font-bold py-2.5 px-2">
           Infografis
         </div>
       </div>
       <Slider {...settings}>
-        {data &&
+        {data && data.length > 0 ? (
           data.map((infografi) => (
             <div key={infografi.id}>
               <Image
@@ -46,11 +46,14 @@ export default function Infografis() {
                 alt={infografi.attributes.image.data.attributes.alternativeText}
                 width={500}
                 height={500}
-                className="rounded-lg h-96 w-full"
+                className="rounded-lg "
                 priority
               />
             </div>
-          ))}
+          ))
+        ) : (
+          <DataNull />
+        )}
       </Slider>
     </div>
   );

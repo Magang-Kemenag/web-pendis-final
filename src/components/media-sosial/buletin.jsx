@@ -1,6 +1,7 @@
 import { formatDateEn } from "@/utils/formatter";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import DataNull from "../datanull/datanull";
 
 export default function Buletin() {
   const [data, setData] = useState(null);
@@ -21,15 +22,16 @@ export default function Buletin() {
         <div className="text-ftitle text-lg font-bold py-2.5 px-2">Buletin</div>
       </div>
       <div className="overflow-y-auto overflow-x-hidden mb-2">
-        {data &&
+        {data && data.length > 0 ? (
           data.map((buletin) => (
-            <div className="flex gap-2 mx-2 mt-2">
+            <div className="flex gap-2 mx-2 mt-2" key={buletin.id}>
               <Image
                 height={120}
                 width={120}
                 priority
                 src={`${process.env.NEXT_PUBLIC_STRAPI}${buletin.attributes.image.data.attributes.url}`}
                 className="rounded-md"
+                alt={buletin.attributes.image.data.attributes.alternativeText}
               />
               <div>
                 <div className="font-bold text-ftitle text-lg w-full">
@@ -40,7 +42,10 @@ export default function Buletin() {
                 </div>
               </div>
             </div>
-          ))}
+          ))
+        ) : (
+          <DataNull />
+        )}
       </div>
     </div>
   );

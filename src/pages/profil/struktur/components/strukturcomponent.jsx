@@ -1,3 +1,4 @@
+import DataNull from "@/components/datanull/datanull";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Subbag from "./subbag";
@@ -25,7 +26,7 @@ export default function StrukturComponent({ category }) {
           {data &&
             data[0]?.attributes?.struktur_category?.data?.attributes?.title}
         </div>
-        {data &&
+        {data && data.length > 0 ? (
           data.map((struktur) => {
             if (struktur.attributes.level === "level1") {
               return (
@@ -83,7 +84,10 @@ export default function StrukturComponent({ category }) {
                 </div>
               );
             }
-          })}
+          })
+        ) : (
+          <DataNull />
+        )}
 
         <div className="flex gap-4 items-start">
           {data &&
@@ -122,7 +126,7 @@ export default function StrukturComponent({ category }) {
           data.map((struktur) => {
             if (struktur.attributes.level === "bagian") {
               return (
-                <div className="grid grid-cols-4 gap-4">
+                <div className="grid grid-cols-4 gap-4" key={struktur.id}>
                   <div className="col-span-1 flex gap-4">
                     <div className="flex flex-col gap-4 items-center">
                       <div className="font-bold text-lg text-ftitle text-center h-10">

@@ -2,6 +2,7 @@ import Link from "next/link";
 import "aos/dist/aos.css";
 import styles from "@/styles/Home.module.css";
 import { useEffect, useState } from "react";
+import DataNull from "@/components/datanull/datanull";
 export default function UnitComponent() {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(false);
@@ -19,7 +20,7 @@ export default function UnitComponent() {
     <div className="flex flex-col gap-4">
       <div className={`${styles.title_center}`}>Unit Kerja</div>
       <div className="grid grid-cols-3 gap-4">
-        {data &&
+        {data && data.length > 0 ? (
           data.map((unit, index) => (
             <Link key={unit.id} href={`/unit-kerja/${unit.attributes.slug}`}>
               <img
@@ -28,7 +29,10 @@ export default function UnitComponent() {
                 className="rounded-lg m-auto"
               />
             </Link>
-          ))}
+          ))
+        ) : (
+          <DataNull />
+        )}
       </div>
       <div className="flex mt-8 justify-center">
         <Link

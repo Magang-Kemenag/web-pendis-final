@@ -35,14 +35,16 @@ export default function DetailOpini({
           <div className="artikel-content col-span-2 max-md:col-span-1">
             <div className="rounded-lg" alt="">
               {image.map((img) => (
-                <Image
-                  src={`${process.env.NEXT_PUBLIC_STRAPI}${img.attributes.url}`}
-                  alt={alt}
-                  width={500}
-                  height={500}
-                  className="w-full rounded-lg"
-                  priority
-                />
+                <div key={img.id}>
+                  <Image
+                    src={`${process.env.NEXT_PUBLIC_STRAPI}${img.attributes.url}`}
+                    alt={alt}
+                    width={500}
+                    height={500}
+                    className="w-full rounded-lg"
+                    priority
+                  />
+                </div>
               ))}
             </div>
             <div className="mt-16 flex flex-col gap-3">

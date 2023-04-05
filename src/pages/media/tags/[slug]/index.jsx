@@ -34,23 +34,24 @@ export default function Post({ data }) {
   const articles = data.data;
 
   return (
-    <div className="grid grid-cols-3">
-      <div className="col-span-2">
+    <div className="grid lg:grid-cols-3 md:grid-cols-1 bg-white gap-4 p-12">
+      <div className="lg:col-span-2 flex flex-col gap-4">
         <div className="font-bold text-base-blue text-3xl">
           Hasil Untuk Tag "{Capital(3)}"
         </div>
-        <div className="flex flex-col gap-2"></div>
-        {articles.map((article) => (
-          <LongCard
-            key={article.id}
-            title={article.attributes.title}
-            image={article.attributes.image.data.attributes.url}
-            date={article.attributes.updatedAt}
-            alt={article.attributes.image.data.attributes.alternativeText}
-            slug={article.attributes.slug}
-            type="articles"
-          />
-        ))}
+        <div className="flex flex-col gap-2">
+          {articles.map((article) => (
+            <LongCard
+              key={article.id}
+              title={article.attributes.title}
+              image={article.attributes.image.data.attributes.url}
+              date={article.attributes.updatedAt}
+              alt={article.attributes.image.data.attributes.alternativeText}
+              slug={article.attributes.slug}
+              type="articles"
+            />
+          ))}
+        </div>
       </div>
       <PopularComponent />
     </div>

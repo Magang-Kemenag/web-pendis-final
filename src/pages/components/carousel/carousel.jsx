@@ -9,6 +9,23 @@ import "aos/dist/aos.css";
 import Image from "next/image";
 import DataNull from "@/components/datanull/datanull";
 
+const PrevButton = (props) => {
+  const { className, onClick } = props;
+  return (
+    <div className={className} onClick={onClick}>
+      <i className="fa fa-chevron-left bg-white"></i>
+    </div>
+  );
+};
+
+const NextButton = (props) => {
+  const { className, onClick } = props;
+  return (
+    <div className={className} onClick={onClick}>
+      <i className="fa fa-chevron-right"></i>
+    </div>
+  );
+};
 function Carousel() {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(false);
@@ -27,6 +44,8 @@ function Carousel() {
     dots: true,
     loop: true,
     slidesToShow: 1,
+    prevArrow: <PrevButton />,
+    nextArrow: <NextButton />,
     slidesToScroll: 1,
     autoplay: true,
     speed: 1000,
@@ -37,7 +56,7 @@ function Carousel() {
     <div className="mx-12">
       <div className="w-full">
         <Slider {...settings}>
-          {data &&
+          {data && data.length > 0 ? (
             data.map((article) => (
               <Link
                 href={`/media/articles/${article.attributes.slug}`}
@@ -59,7 +78,10 @@ function Carousel() {
                   <div>{formatDateEn(article.attributes.updatedAt)}</div>
                 </div>
               </Link>
-            ))}
+            ))
+          ) : (
+            <DataNull />
+          )}
         </Slider>
       </div>
     </div>

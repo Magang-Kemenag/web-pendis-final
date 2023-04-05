@@ -1,3 +1,4 @@
+import DataNull from "@/components/datanull/datanull";
 import styles from "@/styles/Home.module.css";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -19,7 +20,7 @@ export default function PublikasiComponent() {
     <section className="flex flex-col gap-8 bg-white p-12">
       <div className={`${styles.title_center}`}>Publikasi</div>
       <div className="grid grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-4">
-        {data &&
+        {data && data.length > 0 ? (
           data.map((publikasi, index) => (
             <div
               key={publikasi.id}
@@ -40,7 +41,10 @@ export default function PublikasiComponent() {
                 {publikasi.attributes.name}
               </a>
             </div>
-          ))}
+          ))
+        ) : (
+          <DataNull />
+        )}
       </div>
     </section>
   );

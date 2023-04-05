@@ -39,7 +39,7 @@ export default function Home() {
             </div>
           </div>
           <Layanan />
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 px-12 gap-12">
+          <div className="grid grid-cols-3 max-md:grid-cols-1 px-12 gap-12">
             <div className="lg:col-span-2">
               <ReccentImage />
               <ReccentVideo />

@@ -114,7 +114,7 @@ export default function Detail({
           </div>
         </div>
       </div>
-      {relateds && (
+      {relateds.length > 0 && (
         <div className="mt-32 flex flex-col gap-8">
           <div className={styles.section_title}>Artikel Terkait</div>
           <div className={styles.article_base}>

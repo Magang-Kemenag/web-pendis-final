@@ -28,21 +28,24 @@ export default function ReccentImage() {
           Selengkapnya
         </Link>
       </div>
-      <div className="grid grid-cols-3 gap-3">
-        {data &&
+      <div className="grid grid-cols-3 max-sm:grid-cols-1 gap-3">
+        {data && data.length > 0 ? (
           data.map((image) => (
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2" key={image.id}>
               <Image
                 src={`${process.env.NEXT_PUBLIC_STRAPI}${image.attributes.image.data.attributes.url}`}
                 width={500}
                 height={500}
-                alt={data[0].attributes.alternativeText}
+                alt={image.attributes.image.data.attributes.alternativeText}
                 className={stylesgaleri.image}
                 priority
               />
               <p className="font-bold text-ftitle">{image.attributes.title}</p>
             </div>
-          ))}
+          ))
+        ) : (
+          <DataNull />
+        )}
       </div>
       <Link href="/profil">
         <div className={styles.btn_standard_responsive}>Selengkapnya</div>

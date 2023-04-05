@@ -17,21 +17,26 @@ export default function UnitKerja() {
   }, []);
   return (
     <div className="px-12">
-      <div className="grid grid-cols-5 max-md:grid-cols-3 max-sm:grid-cols-2 mt-16 max-md:mt-8 gap-16 max-sm:gap-4">
-        <>
-          {data &&
-            data.map((unit, index) => (
+      {data && data.length > 0 ? (
+        <div className="grid grid-cols-5 max-md:grid-cols-3 max-sm:grid-cols-2 mt-16 max-md:mt-8 gap-16 max-sm:gap-4">
+          <div>
+            {data.map((unit, index) => (
               <Link key={unit.id} href={`/unit-kerja/${unit.attributes.slug}`}>
                 <Image
                   src={`${process.env.NEXT_PUBLIC_STRAPI}${unit.attributes.image.data.attributes.url}`}
-                  alt=""
+                  alt={unit.attributes.image.data.attributes.alternativeText}
+                  width={500}
+                  height={500}
                   className="rounded-lg"
                   priority
                 />
               </Link>
             ))}
-        </>
-      </div>
+          </div>
+        </div>
+      ) : (
+        <DataNull />
+      )}
     </div>
   );
 }

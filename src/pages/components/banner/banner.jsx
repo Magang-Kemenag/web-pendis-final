@@ -30,17 +30,22 @@ export default function Banner() {
   return (
     <div className="px-12">
       <Slider {...settings}>
-        {data &&
+        {data && data.length > 0 ? (
           data.map((banner) => (
-            <Image
-              height={banner.attributes.image.data.attributes.height}
-              width={banner.attributes.image.data.attributes.width}
-              src={`${process.env.NEXT_PUBLIC_STRAPI}${banner.attributes.image.data.attributes.url}`}
-              alt={banner.attributes.image.data.attributes.alternativeText}
-              priority
-              className="rounded-lg"
-            />
-          ))}
+            <div key={banner.id}>
+              <Image
+                height={banner.attributes.image.data.attributes.height}
+                width={banner.attributes.image.data.attributes.width}
+                src={`${process.env.NEXT_PUBLIC_STRAPI}${banner.attributes.image.data.attributes.url}`}
+                alt={banner.attributes.image.data.attributes.alternativeText}
+                priority
+                className="rounded-lg"
+              />
+            </div>
+          ))
+        ) : (
+          <DataNull />
+        )}
       </Slider>
     </div>
   );

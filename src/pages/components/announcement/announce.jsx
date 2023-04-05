@@ -25,43 +25,47 @@ export default function Announce() {
         <div className="w-full h-0.5 bg-ftitle"></div>
         <div className="grid grid-cols-1 gap-2">
           <Suspense fallback={<div>loading...</div>}>
-            {data?.map((article, index) => (
-              <div key={article.id}>
-                <div
-                  className="mt-6 grid grid-cols-3 items-start gap-2"
-                  key={article.id}
-                >
-                  <Image
-                    src={`${process.env.NEXT_PUBLIC_STRAPI}${article.attributes.image.data[0].attributes.url}`}
-                    alt={
-                      article.attributes.image.data[0].attributes
-                        .alternativeText
-                    }
-                    width={
-                      article.attributes.image.data[0].attributes.formats
-                        .thumbnail.width
-                    }
-                    height={
-                      article.attributes.image.data[0].attributes.formats
-                        .thumbnail.height
-                    }
-                    className="rounded-md"
-                    priority
-                  />
-                  <div className="col-span-2">
-                    <div className="date text-sm">
-                      {formatDateEn(article.attributes.updatedAt)}
+            {data && data.length > 0 ? (
+              data.map((article, index) => (
+                <div key={article.id}>
+                  <div
+                    className="mt-6 grid grid-cols-3 max-sm:grid-cols-1 items-start gap-2"
+                    key={article.id}
+                  >
+                    <Image
+                      src={`${process.env.NEXT_PUBLIC_STRAPI}${article.attributes.image.data[0].attributes.url}`}
+                      alt={
+                        article.attributes.image.data[0].attributes
+                          .alternativeText
+                      }
+                      width={
+                        article.attributes.image.data[0].attributes.formats
+                          .thumbnail.width
+                      }
+                      height={
+                        article.attributes.image.data[0].attributes.formats
+                          .thumbnail.height
+                      }
+                      className="rounded-md w-full"
+                      priority
+                    />
+                    <div className="col-span-2">
+                      <div className="date text-sm">
+                        {formatDateEn(article.attributes.updatedAt)}
+                      </div>
+                      <Link
+                        href={`/media/announcements/${article.attributes.slug}`}
+                        className="title pt-0 text-ftitle font-bold text-base hover:text-base-blue"
+                      >
+                        {article.attributes.title}
+                      </Link>
                     </div>
-                    <Link
-                      href={`/media/announcements/${article.attributes.slug}`}
-                      className="title pt-0 text-ftitle font-bold text-base hover:text-base-blue"
-                    >
-                      {article.attributes.title}
-                    </Link>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))
+            ) : (
+              <DataNull />
+            )}
           </Suspense>
         </div>
       </div>

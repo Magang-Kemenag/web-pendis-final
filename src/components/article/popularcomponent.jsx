@@ -2,6 +2,7 @@ import { formatDateEn } from "@/utils/formatter";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense, useEffect, useState } from "react";
+import DataNull from "../datanull/datanull";
 
 export default function PopularComponent() {
   const [data, setData] = useState();
@@ -19,15 +20,15 @@ export default function PopularComponent() {
   }, []);
 
   return (
-    <div className="bg-white rounded-xl border h-[550px] p-4 mt-12">
+    <div className="bg-white rounded-xl border p-4 mt-12">
       <div className="border-b">
         <div className="text-ftitle text-lg font-bold py-2.5 px-2">Popular</div>
       </div>
       <Suspense fallback={<div>loading...</div>}>
-        {data &&
+        {data && data.length > 0 ? (
           data.map((article) => (
             <div
-              className="mt-6 grid grid-cols-3 items-start gap-2"
+              className="mt-6 grid grid-cols-3 max-md:grid-cols-1 items-start gap-2"
               key={article.id}
             >
               <Image
@@ -41,7 +42,7 @@ export default function PopularComponent() {
                   article.attributes.image.data.attributes.formats.thumbnail
                     .height
                 }
-                className="rounded-md"
+                className="rounded-md w-full"
                 priority
               />
               <div className="col-span-2">
@@ -56,7 +57,10 @@ export default function PopularComponent() {
                 </div>
               </div>
             </div>
-          ))}
+          ))
+        ) : (
+          <DataNull />
+        )}
       </Suspense>
     </div>
   );

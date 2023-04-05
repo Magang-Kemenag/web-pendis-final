@@ -1,3 +1,4 @@
+import DataNull from "@/components/datanull/datanull";
 import { useEffect, useState } from "react";
 
 export default function Data() {
@@ -14,19 +15,23 @@ export default function Data() {
       });
   }, []);
   return (
-    <section className="flex flex-col gap-4 bg-white py-12">
+    <section className="flex flex-col gap-4 bg-white p-12">
       <div className="text-3xl text-center font-bold text-base-blue">Data</div>
       <div className="text-2xl font-bold text-ftitle overflow-auto">
-        {data && (
+        {data && data.length > 0 ? (
           <table className="mr-auto ml-auto">
             <thead className="border-b-2">
               <tr>
                 <td className="border-r-2"></td>
-                {data.map((dt) => (
-                  <td key={dt.id} className="px-8 py-4">
-                    {dt.attributes.name}
-                  </td>
-                ))}
+                {data && data.length > 0 ? (
+                  data.map((dt) => (
+                    <td key={dt.id} className="px-8 py-4">
+                      {dt.attributes.name}
+                    </td>
+                  ))
+                ) : (
+                  <DataNull />
+                )}
               </tr>
             </thead>
             <tbody>
@@ -56,6 +61,8 @@ export default function Data() {
               </tr>
             </tbody>
           </table>
+        ) : (
+          <DataNull />
         )}
       </div>
       <div className="flex mt-8 justify-center">

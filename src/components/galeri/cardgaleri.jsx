@@ -13,7 +13,9 @@ export default function CardGaleri({ image, alt, title, slug }) {
         priority
       />
       <Link href={`/galeri/video/${slug}`}>
-        <div className="font-bold text-lg text-ftitle">{title}</div>
+        <div className="font-bold text-lg text-ftitle hover:text-base-blue">
+          {title}
+        </div>
       </Link>
     </div>
   );

@@ -1,3 +1,4 @@
+import DataNull from "@/components/datanull/datanull";
 import LongCard from "@/components/longcard/longcard";
 import { formatDateEn } from "@/utils/formatter";
 import Image from "next/image";
@@ -23,7 +24,7 @@ export default function ReccentPengumuman({ type }) {
     <div className="flex flex-col gap-4">
       <div className="font-bold text-base-blue text-3xl">Pengumuman</div>
       <div className="flex flex-col gap-2">
-        {data &&
+        {data && data.length > 0 ? (
           data.map((announce) => (
             <LongCard
               title={announce.attributes.title}
@@ -34,7 +35,10 @@ export default function ReccentPengumuman({ type }) {
               unit={announce.attributes.unit.data.attributes.name}
               type={type}
             />
-          ))}
+          ))
+        ) : (
+          <DataNull />
+        )}
       </div>
       <div className="flex mt-8 justify-center">
         <Link

@@ -1,4 +1,5 @@
 import Card from "@/components/card/card";
+import DataNull from "@/components/datanull/datanull";
 import LongCard from "@/components/longcard/longcard";
 import { formatDateEn } from "@/utils/formatter";
 import Image from "next/image";
@@ -25,7 +26,7 @@ export default function ReccentBuletin({ type }) {
     <div className="flex flex-col gap-4">
       <div className="font-bold text-base-blue text-3xl">Buletin</div>
       <div className="flex flex-col gap-2">
-        {data &&
+        {data && data.length > 0 ? (
           data.map((buletin) => (
             <LongCard
               title={buletin.attributes.title}
@@ -35,7 +36,10 @@ export default function ReccentBuletin({ type }) {
               slug={buletin.attributes.slug}
               type={type}
             />
-          ))}
+          ))
+        ) : (
+          <DataNull />
+        )}
       </div>
       <div className="flex mt-8 justify-center">
         <Link

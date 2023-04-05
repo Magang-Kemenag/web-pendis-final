@@ -55,12 +55,12 @@ export default function Layanan() {
   };
 
   return (
-    <div className="flex flex-col gap-8 bg-white py-12">
+    <div className="flex flex-col gap-8 bg-white p-12">
       <div className="text-3xl text-center font-bold text-base-blue">
         Layanan
       </div>
       <Slider {...settings}>
-        {data &&
+        {data && data.length > 0 ? (
           data.map((layanan) => (
             <div key={layanan.id}>
               <a href={layanan.attributes.link}>
@@ -74,7 +74,10 @@ export default function Layanan() {
                 />
               </a>
             </div>
-          ))}
+          ))
+        ) : (
+          <DataNull />
+        )}
       </Slider>
     </div>
   );

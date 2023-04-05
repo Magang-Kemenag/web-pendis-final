@@ -12,13 +12,13 @@ export default function LongCard({
   type,
 }) {
   return (
-    <div className="grid grid-cols-3 items-start gap-2 border-2 rounded-lg p-2">
+    <div className="grid grid-cols-3 max-sm:grid-cols-1 items-start gap-2 border-2 rounded-lg p-2">
       <Image
         src={`${process.env.NEXT_PUBLIC_STRAPI}${image}`}
         width={500}
         height={500}
         alt={alt}
-        className={`rounded-lg `}
+        className={`rounded-lg w-full`}
         priority
       />
       <div className="col-span-2">

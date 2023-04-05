@@ -1,3 +1,4 @@
+import DataNull from "@/components/datanull/datanull";
 import LongCard from "@/components/longcard/longcard";
 import { formatDateEn } from "@/utils/formatter";
 import Image from "next/image";
@@ -24,18 +25,23 @@ export default function Reccent({ type }) {
     <div className="flex flex-col gap-4">
       <div className="font-bold text-base-blue text-3xl">Berita</div>
       <div className="flex flex-col gap-2">
-        {data &&
+        {data && data.length > 0 ? (
           data.map((article) => (
-            <LongCard
-              title={article.attributes.title}
-              image={article.attributes.image.data.attributes.url}
-              date={article.attributes.updatedAt}
-              alt={article.attributes.image.data.attributes.alternativeText}
-              slug={article.attributes.slug}
-              unit={article.attributes.unit.data.attributes.name}
-              type={type}
-            />
-          ))}
+            <div key={article.id}>
+              <LongCard
+                title={article.attributes.title}
+                image={article.attributes.image.data.attributes.url}
+                date={article.attributes.updatedAt}
+                alt={article.attributes.image.data.attributes.alternativeText}
+                slug={article.attributes.slug}
+                unit={article.attributes.unit.data.attributes.name}
+                type={type}
+              />
+            </div>
+          ))
+        ) : (
+          <DataNull />
+        )}
       </div>
       <div className="flex mt-8 justify-center">
         <Link

@@ -12,7 +12,7 @@ export default function Card({ title, image, date, alt, slug, unit, type }) {
         width={500}
         height={500}
         alt={alt}
-        className={`rounded-lg w-full h-[180px] ${stylescard.img}`}
+        className={`rounded-lg w-full ${stylescard.img}`}
         priority
       />
       <div className="flex justify-between items-center text-fbody text-xs">
