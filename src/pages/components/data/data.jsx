@@ -37,11 +37,12 @@ export default function Data() {
             <tbody>
               <tr>
                 <td className="border-r-2">Sekolah</td>
-                {data.map((dt) => (
-                  <td key={dt.id} className="px-8 py-4">
-                    {dt.attributes.data_beranda.data.attributes.sekolah}
-                  </td>
-                ))}
+                {data &&
+                  data.map((dt) => (
+                    <td key={dt.id} className="px-8 py-4">
+                      {dt.attributes.data_beranda.data.attributes.sekolah}
+                    </td>
+                  ))}
               </tr>
               <tr>
                 <td className="border-r-2">Siswa/i</td>

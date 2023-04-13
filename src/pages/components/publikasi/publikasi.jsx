@@ -21,17 +21,18 @@ export default function Publikasi() {
       <div className="text-3xl font-bold text-base-blue text-end">
         Publikasi
       </div>
-      <div className="grid grid-cols-2 max-sm:grid-cols-1">
-        <div className="flex flex-col items-start gap-4 max-sm:hidden">
-          <div className="logo bg-base-blue h-12 w-12 p-2 rounded-lg">
-            <img src="/assets/lampu.png" alt="" />
+      {data && data.length > 0 ? (
+        <div className="grid grid-cols-2 max-sm:grid-cols-1">
+          <div className="flex flex-col items-start gap-4 max-sm:hidden">
+            <div className="logo bg-base-blue h-12 w-12 p-2 rounded-lg">
+              <img src="/assets/lampu.png" alt="" />
+            </div>
+            <div className="copy text-left w-80 text-ftitle">
+              Direktorat Jenderal Pendidikan Islam mendukung pengembangan
+              pendidikan dengan memberikan berbagai peluang bantuan beasiswa
+            </div>
           </div>
-          <div className="copy text-left w-80 text-ftitle">
-            Direktorat Jenderal Pendidikan Islam mendukung pengembangan
-            pendidikan dengan memberikan berbagai peluang bantuan beasiswa
-          </div>
-        </div>
-        {data && data.length > 0 ? (
+
           <div className="grid grid-cols-4 max-sm:grid-cols-2 gap-4">
             {data.map((publikasi, index) => (
               <div
@@ -56,10 +57,10 @@ export default function Publikasi() {
               </div>
             ))}
           </div>
-        ) : (
-          <DataNull />
-        )}
-      </div>
+        </div>
+      ) : (
+        <DataNull />
+      )}
     </section>
   );
 }

@@ -8,6 +8,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Image from "next/image";
 import DataNull from "@/components/datanull/datanull";
+import LoaderData from "@/components/loader/loaderdata";
 
 const PrevButton = (props) => {
   const { className, onClick } = props;
@@ -55,34 +56,40 @@ function Carousel() {
   return (
     <div className="mx-12">
       <div className="w-full">
-        <Slider {...settings}>
-          {data && data.length > 0 ? (
-            data.map((article) => (
-              <Link
-                href={`/media/articles/${article.attributes.slug}`}
-                className="relative h-1/2 w-full rounded-xl bg-slate-900"
-                key={article.id}
-              >
-                <Image
-                  src={`${process.env.NEXT_PUBLIC_STRAPI}${article.attributes.image.data.attributes.url}`}
-                  alt={article.attributes.image.data.attributes.alternativeText}
-                  width={500}
-                  height={500}
-                  priority
-                  className="w-full rounded-xl relative"
-                />
-                <div className="text-white absolute left-10 top-80 flex flex-col gap-4">
-                  <div className=" top-80 text-4xl">
-                    {article.attributes.title}
+        {isLoading ? (
+          <LoaderData />
+        ) : (
+          <Slider {...settings}>
+            {data && data.length > 0 ? (
+              data.map((article) => (
+                <Link
+                  href={`/media/articles/${article.attributes.slug}`}
+                  className="relative h-1/2 w-full rounded-xl bg-slate-900"
+                  key={article.id}
+                >
+                  <Image
+                    src={`${process.env.NEXT_PUBLIC_STRAPI}${article.attributes.image.data.attributes.url}`}
+                    alt={
+                      article.attributes.image.data.attributes.alternativeText
+                    }
+                    width={500}
+                    height={500}
+                    priority
+                    className="w-full rounded-xl relative"
+                  />
+                  <div className="text-white absolute left-10 top-80 flex flex-col gap-4">
+                    <div className=" top-80 text-4xl">
+                      {article.attributes.title}
+                    </div>
+                    <div>{formatDateEn(article.attributes.updatedAt)}</div>
                   </div>
-                  <div>{formatDateEn(article.attributes.updatedAt)}</div>
-                </div>
-              </Link>
-            ))
-          ) : (
-            <DataNull />
-          )}
-        </Slider>
+                </Link>
+              ))
+            ) : (
+              <DataNull />
+            )}
+          </Slider>
+        )}
       </div>
     </div>
   );

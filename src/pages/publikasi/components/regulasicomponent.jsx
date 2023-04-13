@@ -18,7 +18,7 @@ export default function RegulasiComponent() {
   return (
     <section className="flex flex-col gap-8 px-12">
       <div className={`${styles.title_center}`}>Regulasi</div>
-      <div className="">
+      <div className="flex flex-col gap-8">
         {data && data.length > 0 ? (
           data.map((regulasi) => (
             <div key={regulasi.id}>

@@ -24,7 +24,9 @@ export default function LongCard({
       <div className="col-span-2">
         <div className="text-ftitle">{unit}</div>
         <Link href={`/media/${type}/${slug}`}>
-          <div className="text-ftitle text-xl font-bold">{title}</div>
+          <div className="text-ftitle text-xl font-bold hover:text-base-blue">
+            {title}
+          </div>
         </Link>
         <div>{formatDateEn(date)}</div>
       </div>
